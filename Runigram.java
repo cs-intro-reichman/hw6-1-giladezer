@@ -155,9 +155,9 @@ public class Runigram {
 		
 		// Change: Removed Math.round() and added the 0.5 offset 
 		// to simulate rounding behavior using integer truncation.
-		int r = (int) ( alpha * c1.getRed()   + (1 - alpha) * c2.getRed()   + 0.5 );
-		int g = (int) ( alpha * c1.getGreen() + (1 - alpha) * c2.getGreen() + 0.5 );
-		int b = (int) ( alpha * c1.getBlue()  + (1 - alpha) * c2.getBlue()  + 0.5 );
+		int r = (int) ( alpha * c1.getRed()   + (1 - alpha) * c2.getRed()   );
+		int g = (int) ( alpha * c1.getGreen() + (1 - alpha) * c2.getGreen()  );
+		int b = (int) ( alpha * c1.getBlue()  + (1 - alpha) * c2.getBlue()  );
 		
 		return new Color(r, g, b);
 	}
