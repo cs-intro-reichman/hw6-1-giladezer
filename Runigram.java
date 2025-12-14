@@ -16,7 +16,7 @@ public class Runigram {
 		Color[][] image;
 
 		// Tests the horizontal flipping of an image:
-		image = flippedHorizontally(tinypic);
+		image = grayScaled(tinypic);
 		System.out.println();
 		print(image);
 		
@@ -109,7 +109,7 @@ public class Runigram {
 		int r = pixel.getRed();
 		int g = pixel.getGreen();
 		int b = pixel.getBlue();
-		int lum = (int)(0.299 * r + 0.587 * g + 0.114 * b);
+		int lum = (int)Math.round((0.299 * r + 0.587 * g + 0.114 * b));
 		return new Color(lum, lum, lum);
 	}
 	
@@ -118,26 +118,13 @@ public class Runigram {
 	 */
 	public static Color[][] grayScaled(Color[][] image) {
 		Color[][] grayImage = new Color[image.length][image[0].length];
-
 		for (int i = 0; i < image.length; i++) {
 			for (int j = 0; j < image[0].length; j++) {
-				
-				Color pixel = image[i][j];
-				
-				// 1. Get components
-				int r = pixel.getRed();
-				int g = pixel.getGreen();
-				int b = pixel.getBlue();
-
-				// 2. Calculate Luminance (L)
-				int lum = (int)(0.299 * r + 0.587 * g + 0.114 * b);
-
-				// 3. Create and assign the new Color (L, L, L)
-				grayImage[i][j] = new Color(lum, lum, lum);
+				grayImage[i][j] = luminance(image[i][j]);
 			}
 		}
 		return grayImage;
-	}
+	}	
 	
 	/**
 	 * Returns an image which is the scaled version of the given image. 
