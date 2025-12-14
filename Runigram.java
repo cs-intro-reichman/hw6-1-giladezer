@@ -150,10 +150,15 @@ public class Runigram {
 	 * v = alpha * v1 + (1 - alpha) * v2, where v1 and v2 are the corresponding r, g, b
 	 * values in the two input color.
 	 */
+	// In Runigram.java, modify the blend Color helper function
 	public static Color blend(Color c1, Color c2, double alpha) {
-		int r = (int) Math.round( alpha * c1.getRed()   + (1 - alpha) * c2.getRed()   );
-		int g = (int) Math.round( alpha * c1.getGreen() + (1 - alpha) * c2.getGreen() );
-		int b = (int) Math.round( alpha * c1.getBlue()  + (1 - alpha) * c2.getBlue()  );
+		
+		// Change: Removed Math.round() and added the 0.5 offset 
+		// to simulate rounding behavior using integer truncation.
+		int r = (int) ( alpha * c1.getRed()   + (1 - alpha) * c2.getRed()   + 0.5 );
+		int g = (int) ( alpha * c1.getGreen() + (1 - alpha) * c2.getGreen() + 0.5 );
+		int b = (int) ( alpha * c1.getBlue()  + (1 - alpha) * c2.getBlue()  + 0.5 );
+		
 		return new Color(r, g, b);
 	}
 	
